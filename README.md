@@ -29,12 +29,15 @@ In order to design and build a big data platform some aspects need to be considd
 	* Tolls amount.
 	* Total amount.
 
-  Each driver would have a small computer in which they can insert the data and then sent them to the platform. This means that there are multiple tenants on the platform and it should managed together at the same time. It might be all at the same time, even though it is least probable. Mapping and transformation data is one of the possible preprocessing tasks doing before storing. 
+  Each driver would have a small computer in which they can insert the data and then sent them to the platform. This means that there are multiple tenants on the platform and it should managed together at the same time. It might be all at the same time, even though it is least probable. Mapping and transformation data is one of the possible preprocessing tasks doing before storing. There exist 112,234,626 tuples in less than one year (24/9/2018 to 5/5/2019) but is expected to grow, so a real scalability must be consider as one of the most important aspects. This means that $\frac{112,234,626}{223}$ = 593
 
-  On the other hand, this component must be able to call all API functions, in order to insert, delete, query or modify data. These operations must be implemented in this module and of course need to satisfy all contracts of interfaces of the API.
+  On the other hand, this component must be able to call all API functions, in order to insert, delete, query or modify data. These operations must be implemented in this module and of course need to satisfy all contracts of interfaces of the API. In general terms this is called Service Level Agreements: redundancy, security or performance. In our case each insertion to the data base depend on each computer on board, so redundance or performance in this point of view is not as importan as the Core part. Security is very important in some situations, but not a real threat in this scenario, since it is not really sensible information. Despite all before, it depends on TLC and TPEP/LPEP terms.
 
   
 
-* APIs (*mysimbdp_daas*): 
+* APIs (*mysimbdp_daas*): this section of the design is based on the comunication between real and physical resources where the data is stored and the interaction of the tenants in the real world. 
 
 * Core (*mysimbdp_coredms*):
+
+![Big Data Platform Design Scheme](/assignment_data/images/BDP_A1_I1.svg)
+
