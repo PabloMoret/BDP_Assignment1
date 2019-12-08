@@ -6,18 +6,18 @@
 
 Big Data Platforms have grown up very quickly these last years, as well as Data Science. In this assignment we will be designing and developing a small big data platform given a data set.
 
-The data set is a group of elements with the same properties. In our case, we will be working with the New York City Taxi Data set. Due to implementing practicalities, the data set will be stored in a *.csv* file, but in real life it would be a real scenario of ingesting each taxi ride and stored and managed them in the data base. NYC Taxi Ride Data Set **Documentation** can be checked [here](https://data.cityofnewyork.us/Transportation/2018-Yellow-Taxi-Trip-Data/t29m-gskq). 
+The data set is a group of elements with the same properties. In our case, we will be working with the New York City Taxi Data set. Due to managing practicalities, the data will be retrieved from the dataset, instead of saving a very huge *.csv* file. In real life it would be a real scenario of ingesting each taxi ride and stored and managed them in the data base. NYC Taxi Ride Data Set **Documentation** can be checked [here](https://data.cityofnewyork.us/Transportation/2018-Yellow-Taxi-Trip-Data/t29m-gskq). 
 
 In order to design and build a big data platform some aspects need to be considder. The design is based on basic 3 components:
 
-* Data Ingestion (*mysimbdp-dataingest*): the data ingestion part is where raw data is retrieved. In our case the data is set by tuples, *tuples* in other words. Each row is a tuple and each colum is a property of each element. Ideally, each driver would submit each trip he or she does, inserting all the required information:
+* Data Ingestion (*mysimbdp-dataingest*): the data ingestion part is where raw data is retrieved. In our case the data is set by tuples, *tuples* in other words. Each row is a tuple and each colum is a property of each element. Ideally, each driver would submit each trip he or she does, inserting all the required information (note that most of the fields below would probably be filled in automatically):
 
 	* ID of the vendor.
 	* Date and time of the trip when engaged.
 	* Date and time of the trip when disengaged.
 	* Number of passengers.
 	* Location when engaged.
-	* Location when disengaged.
+	* Location when disengaged.p
 	* The rate of the trip, depending on the destination.
 	* Trip stored in vehicle or not.
 	* Payment type.
@@ -29,11 +29,11 @@ In order to design and build a big data platform some aspects need to be considd
 	* Tolls amount.
 	* Total amount.
 
-  Each driver would have a small computer in which they can insert the data and then sent them to the platform. This means that there are multiple tenants on the platform and it should managed together at the same time. It might be all at the same time, even though it is least probable. Mapping and transformation data is one of the possible preprocessing tasks doing before storing. There exist 112,234,626 tuples in less than one year (24/9/2018 to 5/5/2019) but is expected to grow, so a real scalability must be consider as one of the most important aspects. This means that $\frac{112,234,626}{223}$ = 593 insertions each day on average.
+  Each driver would have a small computer in which they can insert the data and then sent them to the platform. This means that there are multiple tenants on the platform and it should managed together at the same time. It might be all at the same time, even though it is least probable. Mapping and transformation data is one of the possible preprocessing tasks doing before storing. There exist 112,234,626 tuples in less than one year (24/9/2018 to 5/5/2019) but is expected to grow, so a real scalability must be consider as one of the most important aspects. This means that \\( {112,234,626 \over 223} = 593 \\) insertions each day on average. 
 
   On the other hand, this component must be able to call all API functions, in order to insert, delete, query or modify data. These operations must be implemented in this module and of course need to satisfy all contracts of interfaces of the API. In general terms this is called Service Level Agreements (*SLA*): redundancy, security or performance. In our case each insertion to the data base depend on each computer on board, so redundance or performance in this point of view is not as importan as the Core part. Security is very important in some situations, but not a real threat in this scenario, since it is not really sensible information. Despite all before, it depends on TLC and TPEP/LPEP terms.
 
-  
+  Note also that despite in a real scenario all taxi drivers would be sumbitting their trips, here we are doing a simulation, so the insertions are randomized done .
 
 * APIs (*mysimbdp_daas*): this section of the design is based on the comunication between real and physical resources where the data is stored and the interaction of the tenants in the real world. Each Big Data Platform provides its own APIs with its own functions. But in order to start doing the SLAs we first need to select one tecnology as the core of the platform. The *dataingest* component will provide the contracts, given in interfaces, in which a tenant can interact with the data base. Each one will have different privileges obligations. 
 
@@ -108,3 +108,6 @@ MongoDB is a really powerfull tool to develop a big data platforms, but it const
 
 ### Data partition
 
+
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
