@@ -201,5 +201,5 @@ Given the CAP solution, now we have to explain how the data is partitioned. Data
 
 ### Data Ingest Component
 
-In order to launch the Intestion Component, have a look at the [code *README* file](../code/README.md)
+In order to launch the Intestion Component, have a look at the [code *README* file](code/README.md)
 
