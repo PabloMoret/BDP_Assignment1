@@ -1,0 +1,30 @@
+import pymongo
+
+myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+db = myclient["NYC_yellow_taxi_2018"]
+mycol = db["col_init"]
+
+mydict = [
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" },
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" },
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" },
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" },
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" },
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" },
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" },
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" },
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" },
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" },
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" },
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" },
+	{"vendorid": "2", "tpep_pickup_datetime": "2084-11-04T12:32:24.000", "tpep_dropoff_datetime": "2084-11-04T12:47:41.000", "passenger_count": "1", "trip_distance": "1.34", "ratecodeid": "1", "store_and_fwd_flag": "N", "pulocationid": "238", "dolocationid": "236", "payment_type": "2", "fare_amount": "10", "extra": "0", "mta_tax": "0.5", "tip_amount": "0", "tolls_amount": "0", "improvement_surcharge": "0.3", "total_amount": "10.8" }
+]
+
+x = mycol.insert_many(mydict)
+
+print(x)
+
+"""
+
+for x in mycol.find():
+	print(x)"""

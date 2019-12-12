@@ -13,6 +13,4 @@ def get_data():
 
 	print(emulated_data_request)
 	r = requests.get(emulated_data_request)
-	
 	return r.json()
-

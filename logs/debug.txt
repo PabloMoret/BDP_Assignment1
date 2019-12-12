@@ -1,0 +1,9 @@
+2019-12-12 00:55:40,634:INFO:NYC DataBase correctly initialized
+2019-12-12 00:55:40,635:INFO:NYC DataBase already initialized
+2019-12-12 00:56:38,658:INFO:NYC DataBase correctly initialized
+2019-12-12 00:56:38,658:INFO:NYC DataBase already initialized
+2019-12-12 00:56:48,626:INFO:NYC DataBase correctly initialized
+2019-12-12 00:56:48,627:INFO:NYC DataBase already initialized
+2019-12-12 00:58:16,658:INFO:NYC DataBase correctly initialized
+2019-12-12 00:58:16,659:INFO:NYC DataBase already initialized
+2019-12-12 01:09:01,773:ERROR:Failed inserting
