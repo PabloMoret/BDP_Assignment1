@@ -156,9 +156,50 @@ The decisions taken in this example are:
 MongoDB is a really powerfull tool to develop a big data platforms. The raw data obtained from the sources are already in *.bson* files, so no other file transformation is needed.
 In a real scenario, the data would be already parsed to *.bson* files in order to speed up the ingestion.
 
-As already said above, each 
+As already said above, each object contains a simple list of trip properties. Now, with this structure, the most accurate way to implement the core of the data base is with a simple container. Have in mind that there is just a 48GB of data in more than 7 months, so we can linearly use more containers as the data grows in size. Containers are meant to be used for different purposes, however, since we want a usefull, scalable and easy to use data platform, we will be splitting the data in different containers. One year of retrieved data is supposed to be less than 100GBs of disk memory, so we will have a single container for year. Despite this decision, if the number of trips increases for any reason, we are able to use more containers.
 
+Google Cloud will be the most suitable techology, since it is a good platform for MongoDB using Kubernetes. There will be 3 nodes: the main one, the backup one and the temp one. All the data will be stored in the main node in one Mongo Collection. Collections can handle therabytes of information and almost never fail. However, it is implemented in a real and physical resource, thus we usually split the resources and the data to make it scalable and manageable.
+
+Each object or also called *document* in Mongo has the following format:
+
+```
+{
+	"vendorid":"2",
+	"tpep_pickup_datetime":"2037-11-17T21:24:28.000",
+	"tpep_dropoff_datetime":"2037-11-17T21:46:03.000",
+	"passenger_count":"1",
+	"trip_distance":"2.99",
+	"ratecodeid":"1",
+	"store_and_fwd_flag":"N",
+	"pulocationid":"170",
+	"dolocationid":"143",
+	"payment_type":"1",
+	"fare_amount":"15",
+	"extra":"0.5",
+	"mta_tax":"0.5",
+	"tip_amount":"1.7",
+	"tolls_amount":"0",
+	"improvement_surcharge":"0.3",
+	"total_amount":"18"
+}
+```
+As it is shown above, each object has a bunch of properties, but they do not have an id to identify them. In principle, we will be use the MongoDB *_id* tag to identify them. Despite that, there will not be a planned data analysis so the managers can still use the basic query API or a custom one to access the data base.
 
 ### Data partition
 
+The data partition model is very important in order to build a strong and flexible database. NYC Data Base is going to be build with 3 initial nodes. This is due to the client owner of NYC taxi trips data does not need access the data from different places, since the amount of it is quite low compared with other examples. Nonetheless there will be tons of data sources ingesting data, so the model will have several data brokers organizing and managing all the information to balance the load of the *core* and the backup server is meant to be far away to guarantee that, in case of a physical problem, one server is still available. The other two nodes whould help keeping the **ACID** properties:
+
+* **Atomicy**: the platform should ensure that the data generated is saved in the core. The brokers should ensure this property, hence, if the main node is not working, brokers would send it to the temp node or keep the information in their memory, until the main server is available.
+* **Consistency**: the platform should also ensure that the data ingested is the same as the source. This is very importante, since we can not work with corrupted data.
+* **Isolation**: the system could be equiped with technology so that the ingestions can be done paralelized, regardless in reality they are serialized.
+* **Durability**: data would be accessible for the managers even though occurs a fail. It is thanks to the backup node and the temp node. The first one does not receive requests from any source and it has less probability to fail or to stop withstanding.
+
+The platform implementation maintains a balance between availability and consistency. Availability is provided by the two nodes. If a node is good enough, two nodes will supply with the required availability but also keep a good consistency.
+For NYC trips, the most suitable time in a day to do backups is when less people are having rides. But we should also know that there exist rides in the middle of the night and brokers can hold until the main server is backed up. So, while the platform satisfies most of the ACID properties, we will still be looking for a more balance implementation using **BASE** properties.
+
+Given the CAP solution, now we have to explain how the data is partitioned. Data accessing is not the priority in this implementation, since the biggest part of the operations are ingesting. All the data will be in the same main node. This lets the client cut down the cost of the deployment and it is more suited for its needs. Deploying 10 or 20 nodes will not improve the availability and consistency, because there is more spreaded data to be checked and backed up. The only reason to do this is to reduce the probability of loosing availability in case of failure.
+
+### Data Ingest Component
+
+In order to launch the Intestion Component, have a look at the [code *README* file](../code/README.md)
 
