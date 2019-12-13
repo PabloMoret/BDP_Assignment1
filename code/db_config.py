@@ -13,7 +13,14 @@ def db_init ():
 
 
 	try:
-		mongodb_client = pymongo.MongoClient("mongodb://localhost:27017/")
+		#mongodb_client = pymongo.MongoClient("mongodb://localhost:27017/")
+
+		
+		mongodb_client = pymongo.MongoClient("mongodb://nyctaxi:nyctaxibdp@nycmain-shard-00-00-843gz.mongodb.net:27017,nycmain-shard-00-01-843gz.mongodb.net:27017,nycmain-shard-00-02-843gz.mongodb.net:27017/test?ssl=true&replicaSet=NYCmain-shard-0&authSource=admin&retryWrites=true&w=majority")
+		db = mongodb_client.test
+
+		print(db)
+
 		db_list = mongodb_client.list_database_names()
 
 		if "NYC_yellow_taxi_2018" not in db_list:

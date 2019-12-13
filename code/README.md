@@ -3,4 +3,7 @@
 
 # Code README
 
-## 
+## Installation: Setting up the environment
+
+This implementation is based on Python. It uses the MongoDB platform. The first step is to install the requirements. Find the *requirements.txt* in the *code* folder and run the following command:
+
