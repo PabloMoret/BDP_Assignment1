@@ -10,14 +10,12 @@ The documentation of the code implementation can be found [here](code/README.md)
 	13. [Containers](#containers)
 	14. [Scalability in Platform](#scalability-in-platform)
 	15. [Industrial Cloud Development](#industrial-cloud-development)
-
 2. [Development and deployment](#development-an-deployment)
 	21. [Core Schema Structure](#core-schema-structure)
 	22. [Data partition](#data-partition)
 	23. [Data Ingest Component](#data-ingest-component)
 	24. [Performance in concurrent ingestion](#performance-in-concurrent-ingestion)
 	25. [Improving performance](#improving-performance)
-
 3. [Extension with discovery](#extension-with-discovery)
 
 
