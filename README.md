@@ -1,5 +1,26 @@
 # Assignment 1  785257
 
+The documentation of the code implementation can be found [here](code/README.md).
+
+## Index 
+
+1. [Design of a Big Data Platform](#design-of-a-big-data-platform)
+	11. [Desing and Interaction between Components](#desing-and-interaction-between-components)
+	12. [Nodes to run the Platform](#nodes-to-run-the-platform)
+	13. [Containers](#containers)
+	14. [Scalability in Platform](#scalability-in-platform)
+	15. [Industrial Cloud Development](#industrial-cloud-development)
+
+2. [Development and deployment](#development-an-deployment)
+	21. [Core Schema Structure](#core-schema-structure)
+	22. [Data partition](#data-partition)
+	23. [Data Ingest Component](#data-ingest-component)
+	24. [Performance in concurrent ingestion](#performance-in-concurrent-ingestion)
+	25. [Improving performance](#improving-performance)
+
+3. [Extension with discovery](#extension-with-discovery)
+
+
 ## Design of a Big Data Platform
 
 ### Desing and Interaction between Components
@@ -202,4 +223,24 @@ Given the CAP solution, now we have to explain how the data is partitioned. Data
 ### Data Ingest Component
 
 In order to launch the Intestion Component, have a look at the [code *README* file](code/README.md)
+
+### Performance in concurrent ingestion
+
+The code implements two methods of ingestion: one retrieving the data from the server (which takes a very long time), and other one getting the data from a local file. Since the request method takes so many time we will measure the performance reading a local file.
+
+The local file is a sample from the server data file, containing 200 elements. The test will be done calling the ingest component giving the number of concurrent ingestions we want. In order to know how to specify it, check the [code *README* file](code/README.md).
+
+```
+handler.py -l "../data/local_data.csv" -p 8 -t
+```
+
+The command above is calling the ingestion component 8 concurrent times. There is a limit of 128 just in case, however it cold be more than 128 taxis ingesting data at the same time, but we are testing in a closed environment.
+
+
+
+### Improving performance
+
+ssssssssss
+
+## Extension with discovery
 

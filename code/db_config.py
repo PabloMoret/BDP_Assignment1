@@ -2,8 +2,8 @@ import pymongo
 import logging
 
 def db_init ():
-	
-	log_file = "../logs/debug.txt"
+
+	log_file = "../logs/ingestion_log.txt"
 	logging.basicConfig(filename=log_file, level=logging.DEBUG, format="%(asctime)s:%(levelname)s:%(message)s")
 
 
@@ -36,11 +36,11 @@ def db_init ():
 			data_base = NYC_yellow_taxi_trip_data_base
 			collection = NYC_yellow_taxi_trip_data_base["trips"]
 
-			logging.info("NYC DataBase already initialized")
+			#logging.info("NYC DataBase already initialized")
 
 	except Exception as mdb_e:
 		
-		print(mdb_e,"\nCheck log file for detail")
+		print(mdb_e,"\n\nCheck log file for detail")
 		logging.error("Failed fetching the data base information\n\tLocalhost:",localhost,"\n\tDB Name: NYC_yellow_taxi_2018\n\tBD Collection: trips")
 
 
