@@ -12,4 +12,4 @@ def insert_multiple(data):
 		#print(" > Document inserted")
 	except Exception as insert_e:
 		print(insert_e,"\nCheck log file for detail")
-		#logging.error("Failed inserting")
+		logging.error("Failed inserting")

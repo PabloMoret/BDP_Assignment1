@@ -1,0 +1,17 @@
+2019-12-14 21:55:13,425:INFO:DB on Atlass. MongoDB Cluster
+			User: nyctaxi
+2019-12-14 21:55:13,918:INFO:NYC DataBase already initialized
+2019-12-14 21:55:13,918:INFO:Parallelized ingestions: 4
+2019-12-14 21:55:13,924:INFO:Request:   [https://data.cityofnewyork.us/resource/t29m-gskq.json?$limit=2&$offset=1386]
+2019-12-14 21:55:13,926:INFO:Request:   [https://data.cityofnewyork.us/resource/t29m-gskq.json?$limit=5&$offset=1113]
+2019-12-14 21:55:13,929:INFO:Request:   [https://data.cityofnewyork.us/resource/t29m-gskq.json?$limit=12&$offset=987]
+2019-12-14 21:55:13,931:INFO:Request:   [https://data.cityofnewyork.us/resource/t29m-gskq.json?$limit=6&$offset=1983]
+2019-12-14 21:55:13,958:DEBUG:Starting new HTTPS connection (1): data.cityofnewyork.us:443
+2019-12-14 21:55:13,959:DEBUG:Starting new HTTPS connection (1): data.cityofnewyork.us:443
+2019-12-14 21:55:13,960:DEBUG:Starting new HTTPS connection (1): data.cityofnewyork.us:443
+2019-12-14 21:55:13,961:DEBUG:Starting new HTTPS connection (1): data.cityofnewyork.us:443
+2019-12-14 21:56:16,837:DEBUG:https://data.cityofnewyork.us:443 "GET /resource/t29m-gskq.json?$limit=12&$offset=987 HTTP/1.1" 200 None
+2019-12-14 21:56:16,846:DEBUG:https://data.cityofnewyork.us:443 "GET /resource/t29m-gskq.json?$limit=5&$offset=1113 HTTP/1.1" 200 None
+2019-12-14 21:56:18,444:DEBUG:https://data.cityofnewyork.us:443 "GET /resource/t29m-gskq.json?$limit=2&$offset=1386 HTTP/1.1" 200 None
+2019-12-14 21:56:21,348:DEBUG:https://data.cityofnewyork.us:443 "GET /resource/t29m-gskq.json?$limit=6&$offset=1983 HTTP/1.1" 200 None
+2019-12-14 21:56:21,412:INFO:Timer: 67.49227166175842

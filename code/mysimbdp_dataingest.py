@@ -10,13 +10,16 @@ def ingestion_requested():
 	data = get_data()
 	print(" > Ingesting ... ")
 	insert_multiple(data)
+	print(" > Done")
 
 def ingestion(file):
 
-	#print(" > Fetching file ... ")	
+	print(" > Reading file ... ")	
 	f = open(file, "r")
 	data = literal_eval(f.read())
 	f.close()
+	print(" > Fetching data from:  ",file)
 
-	#print(" > Ingesting ... ")
+	print(" > Ingesting ... ")
 	insert_multiple(data)
+	print(" > Done")
