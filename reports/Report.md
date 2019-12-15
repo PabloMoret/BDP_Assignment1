@@ -79,7 +79,7 @@ In order to design and build a big data platform some aspects need to be considd
 
 	* Elasticity: the data base must be able to grow up as the amount of files increases. As the name of *big data platforms* stands for, the data base must manage big volume of information. The company might use more taxis than before, drivers might do more ingestions, and evenmore, the company could need more resources if they are recently affiliated with others or need them for other type of purposes.
 
-![Big Data Platform Design Scheme](/images/BDP_A1_I1.svg)
+![Big Data Platform Design Scheme](/reports/images/BDP_A1_I1.svg)
 
 Explained all above, is the moment to choose a tecnology. In this case, MongoDB is a really good choice due to the following reasons:
 
@@ -103,7 +103,7 @@ Nodes are very important in terms of performance, availability and consistency. 
 
 	Using virtualized containers with Docker/LXC and Kubernetesor other *PaaS* can make the backups and maintainence much easier. However, this implementation will take it into account, as the MongoDB can manage multiple databases, the only step is to deal with some different databases in different nodes. (It is assumed that the backup database is located in a different resource).
 
-![Availability, consistency](/images/BDP_A1_I3.svg)	
+![Availability, consistency](/reports/images/BDP_A1_I3.svg)	
 
 ### Containers
 
@@ -123,7 +123,7 @@ Containers are one of the options to build the platform. In this case, a contain
 
 See a concept of the containerization of the whole platform:
 
-![Containerization of the BDP](/images/BDP_A1_I4.svg)	
+![Containerization of the BDP](/reports/images/BDP_A1_I4.svg)	
 
 ### Scalability in Platform
 
