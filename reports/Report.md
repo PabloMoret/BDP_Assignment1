@@ -4,19 +4,20 @@ The documentation of the code implementation can be found [here](codeReport.md).
 
 ## Index 
 
-1. [Design of a Big Data Platform](#design-of-a-big-data-platform)
-	11. [Desing and Interaction between Components](#desing-and-interaction-between-components)
-	12. [Nodes to run the Platform](#nodes-to-run-the-platform)
-	13. [Containers](#containers)
-	14. [Scalability in Platform](#scalability-in-platform)
-	15. [Industrial Cloud Development](#industrial-cloud-development)
-2. [Development and deployment](#development-an-deployment)
-	21. [Core Schema Structure](#core-schema-structure)
-	22. [Data partition](#data-partition)
-	23. [Data Ingest Component](#data-ingest-component)
-	24. [Performance in concurrent ingestion](#performance-in-concurrent-ingestion)
-	25. [Improving performance](#improving-performance)
-3. [Extension with discovery](#extension-with-discovery)
+1. [Design of a Big Data Platform](#design-of-a-big-data-platform)<br/>
+	11. [Desing and Interaction between Components](#desing-and-interaction-between-components)<br/>
+	12. [Nodes to run the Platform](#nodes-to-run-the-platform)<br/>
+	13. [Containers](#containers)<br/>
+	14. [Scalability in Platform](#scalability-in-platform)<br/>
+	15. [Industrial Cloud Development](#industrial-cloud-development)<br/>
+2. [Development and deployment](#development-an-deployment)<br/>
+	21. [Core Schema Structure](#core-schema-structure)<br/>
+	22. [Data partition](#data-partition)<br/>
+	23. [Data Ingest Component](#data-ingest-component)<br/>
+	23. [Data Ingest Component](#data-ingest-component)<br/>
+	24. [Performance in concurrent ingestion](#performance-in-concurrent-ingestion)<br/>
+	25. [Improving performance](#improving-performance)<br/>
+3. [Extension with discovery](#extension-with-discovery)<br/>
 
 
 ## Design of a Big Data Platform
@@ -220,24 +221,33 @@ Given the CAP solution, now we have to explain how the data is partitioned. Data
 
 ### Data Ingest Component
 
-In order to launch the Intestion Component, have a look at the [code *README* file](code/README.md)
+In order to launch the Intestion Component, have a look at the [code *README* file](/codeReadme.md)
 
 ### Performance in concurrent ingestion
 
-The code implements two methods of ingestion: one retrieving the data from the server (which takes a very long time), and other one getting the data from a local file. Since the request method takes so many time we will measure the performance reading a local file.
+The code implements two methods of ingestion: one retrieving the data from the server (which takes a lot of time), and other one getting the data from a local file. Since the request method takes so many time we will measure the performance reading a local file.
 
-The local file is a sample from the server data file, containing 200 elements. The test will be done calling the ingest component giving the number of concurrent ingestions we want. In order to know how to specify it, check the [code *README* file](code/README.md).
+The local file is a sample from the server data file, containing 100 elements. The test will be done calling the ingest component giving the number of concurrent ingestions we want. In order to know how to specify it, check the [code *README* file](/codeReadme.md).
 
 ```
-handler.py -l "../data/local_data.csv" -p 8 -t
+handler.py -l "../data/local_data.csv" -p 8 -t -d atlass
 ```
 
 The command above is calling the ingestion component 8 concurrent times. There is a limit of 128 just in case, however it cold be more than 128 taxis ingesting data at the same time, but we are testing in a closed environment.
+Furthermore, a script file has been made in order to measure the time it takes to perform from 2 to 128 concurrent ingestions. You can find it [here](../code/performance.sh).
+
+It is looping 125 times performing different concurrent ingestions to the Atlass Cluster. As it can be seen in the [performance_log](../logs/performance_log.txt) it takes little time to store data: just less than 10 seconds for 127 different sources with 100 trips each one ingesting at the same time.
+Given this information we are completely sure that it could perfectly work in a real scenario.
 
 
 ### Improving performance
 
-ssssssssss
+In principle there is no problem ingesting such this amount of data at the same time, even though it is being used a free and limited Atlass Cluster in terms of performance.
+
+However, we know that the data might grow and we need to deploy a flexible data platform. The changes would be the following:
+
+* Using more than one node: this would improve the way the data is store, since parallel nodes can be ingesting less data. But even the availability and the general throughput is better, there is a consistency problem. The more nodes we have (spreaded data), the less consistent our system is.
+* Increasing the number of brokers: brokers are in the middle way between sources and the nodes. A few brokers may collapse if they have tons of sources ingesting. The more brokers the less load the infrastructure has.
 
 ## Extension with discovery
 
